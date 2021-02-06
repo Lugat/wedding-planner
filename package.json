@@ -1,0 +1,50 @@
+{
+  "name": "wedding",
+  "version": "0.1.0",
+  "description": "wedding planner",
+  "main": "gulpfile.js",
+  "author": "Lukas Rydygel",
+  "scripts": {},
+  "lint-staged": {
+    "web/dev/js/**/*.js": "eslint",
+    "web/dev/sass/**/*.scss": "stylelint"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "del": "^5.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-file-include": "^2.0.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-rename": "^1.4.0",
+    "gulp-stylelint": "^9.0.0",
+    "gulp-uglify": "^3.0.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.2.0",
+    "stylelint": "^10.1.0",
+    "stylelint-config-recommended": "^2.2.0"
+  },
+  "dependencies": {
+    "yargs": "^15.0.2"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
+}
