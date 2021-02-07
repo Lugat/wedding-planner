@@ -22,6 +22,7 @@
         <?= $form->field($person, 'name'); ?>
         <?= $form->field($person, 'comment')->textarea(); ?>
         <?= $form->field($person, 'optional')->checkbox(); ?>
+        <?= $form->field($person, 'child')->checkbox(); ?>
         
       </div>
       <div class="modal-footer">

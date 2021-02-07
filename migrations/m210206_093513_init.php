@@ -50,6 +50,7 @@
         'comment' => $this->text(),
         'optional' => $this->tinyInteger(1)->notNull()->defaultValue(0),
         'confirmed' => $this->tinyInteger(1)->notNull()->defaultValue(0),
+        'child' => $this->tinyInteger(1)->notNull()->defaultValue(0),
         'UNIQUE KEY(`group_id`, `name`)'
       ]);
 

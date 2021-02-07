@@ -14207,3 +14207,6 @@ main {
     line-height: 100px;
     content: '- leer -';
     color: #999; }
+
+.optional {
+  opacity: .5; }

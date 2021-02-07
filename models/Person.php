@@ -17,7 +17,7 @@
     {
       return [
         [['event_id', 'name'], 'required'],
-        [['event_id', 'group_id', 'table_id', 'position', 'optional', 'confirmed'], 'integer'],
+        [['event_id', 'group_id', 'table_id', 'position', 'optional', 'child', 'confirmed'], 'integer'],
         [['comment'], 'string'],
         [['name'], 'string', 'max' => 128],
         [['event_id', 'name'], 'unique', 'targetAttribute' => ['event_id', 'name']],
@@ -36,6 +36,7 @@
         'name' => 'Name',
         'comment' => 'Comment',
         'optional' => 'Optional',
+        'child' => 'Child',
         'confirmed' => 'Confirmed',
       ];
 
