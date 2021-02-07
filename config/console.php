@@ -1,7 +1,5 @@
 <?php
 
-  $params = require __DIR__.'/params.php';
-
   $config = [
     'id' => 'basic-console',
     'basePath' => dirname(__DIR__),
@@ -26,7 +24,7 @@
       ],
       'db' => require __DIR__.'/'.YII_ENV.'/db.php',
     ],
-    'params' => $params,
+    'params' => require __DIR__.'/params.php',
   ];
 
   if (YII_ENV_DEV) {
