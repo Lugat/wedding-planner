@@ -28,7 +28,7 @@
     
     <p>Fange jetzt an, deine Hochzeit zu planen.</p>
 
-    <?= Html::a('Erstellen', ['event/create'], ['class' => 'btn btn-block btn-primary']); ?>
+    <?= Html::a('Erstellen', ['create'], ['class' => 'btn btn-block btn-primary']); ?>
 
   </div>
 </div>
