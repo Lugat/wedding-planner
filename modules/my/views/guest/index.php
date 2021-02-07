@@ -24,14 +24,18 @@
 <div class="row">
   <div class="col-sm-6">
     
-    <div class="d-flex justify-content-between align-items-center">
-      <h4>Gäste</h4>
-      <span class="badge badge-secondary">
-        <span data-count="all">0</span> / <?= count($event->people); ?>
-      </span>
+    <div rel="sticky">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Gäste</h4>
+        <span class="badge badge-secondary">
+          <span data-count="all">0</span> / <?= count($event->people); ?>
+        </span>
+      </div>
+
+      <?= $this->render('_list', ['people' => $event->peopleWithoutGroup, 'color' => Yii::$app->params['defaultColor'], 'count' => 'all']); ?>
+      
     </div>
-    
-    <?= $this->render('_list', ['people' => $event->peopleWithoutGroup, 'color' => Yii::$app->params['defaultColor'], 'count' => 'all']); ?>
     
   </div>
   <div class="col-sm-6">

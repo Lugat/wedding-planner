@@ -1,5 +1,56 @@
 $(function() {
   
+  $.fn.sticky = function(offset) {
+    
+    var $elements = $(this);
+    
+    $elements.each(function() {
+
+      var $element = $(this);
+
+      $element.bind('sticky', function(e, scrollTop) {
+                
+        var $this = $(this),
+          top = typeof offset === 'function' ? offset.apply(this) : offset;
+                
+        if (scrollTop >= top) {
+          
+          if ($this.hasClass('sticky') === false) {
+            $this.addClass('sticky').trigger('on.sticky');
+          }
+          
+        } else {
+          
+          if ($this.hasClass('sticky')) {
+            $this.removeClass('sticky').trigger('off.sticky');
+          }
+          
+        }
+
+      }).trigger('sticky');
+      
+    });
+    
+    $(window).scroll(function() {
+      
+      var top = $(this).scrollTop();
+      
+      $elements.trigger('sticky', [top]);
+      
+    }).trigger('scroll');
+    
+    return this;
+    
+  };
+  
+  $('[rel="sticky"]').each(function() {
+    
+    var $this = $(this);
+    
+    $this.sticky($this.offset().top - 15);
+    
+  });
+  
   $('[data-toggle="tooltip"]').tooltip();
   
   $('form.update').on('submit', function(e) {

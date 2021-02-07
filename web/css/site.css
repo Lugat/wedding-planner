@@ -14210,3 +14210,9 @@ main {
 
 .optional {
   opacity: .5; }
+
+@media (min-width: 768px) {
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 15px; } }

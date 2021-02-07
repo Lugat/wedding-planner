@@ -19,14 +19,18 @@
 <div class="row">
   <div class="col-sm-6">
     
-    <div class="d-flex justify-content-between align-items-center">
-      <h4>Gäste</h4>
-      <span class="badge">
-        <span data-count="all"><?= count($event->peopleWithoutTable); ?></span> / <?= count($event->people); ?>
-      </span>
-    </div>
+    <div rel="sticky">
     
-    <?= $this->render('../guest/_list', ['people' => $event->peopleWithoutTable, 'count' => 'all']); ?>
+      <div class="d-flex justify-content-between align-items-center">
+        <h4>Gäste</h4>
+        <span class="badge">
+          <span data-count="all"><?= count($event->peopleWithoutTable); ?></span> / <?= count($event->people); ?>
+        </span>
+      </div>
+
+      <?= $this->render('../guest/_list', ['people' => $event->peopleWithoutTable, 'count' => 'all']); ?>
+      
+    </div>
     
   </div>
   <div class="col-sm-6">

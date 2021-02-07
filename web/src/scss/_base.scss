@@ -22,3 +22,12 @@ main {
 .optional {
   opacity:.5;
 }
+
+@include media-breakpoint-up(md) {
+
+  &.sticky {
+    position:sticky;
+    top:15px;
+  }
+
+}
