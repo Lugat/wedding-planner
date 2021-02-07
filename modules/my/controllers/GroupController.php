@@ -36,10 +36,42 @@
       
     }
     
+    protected function getGroup($id)
+    {
+      return Group::findOne(['event_id' => $this->event->id, 'id' => $id]);
+    }
+    
+    public function actionUpdate($id)
+    {
+      
+      $group = $this->getGroup($id);
+      
+      if ($group->load($_POST)) {
+
+        if ($group->update() !== false) {
+          
+          Yii::$app->session->addFlash('success', 'Die Gruppe wurde aktualisiert.');
+          
+          return $this->redirect(['guest/index']);
+          
+        } else {
+          
+          Yii::$app->session->addFlash('danger', 'Die Gruppe konnte nicht aktualisiert werden.');
+
+        }
+
+      } 
+      
+      return $this->render('update', [
+        'group' => $group
+      ]);
+      
+    } 
+    
     public function actionDelete($id)
     {
       
-      Group::findOne(['event_id' => $this->event->id, 'id' => $id])->delete();
+      $this->getGroup($id)->delete();
       
       Yii::$app->session->addFlash('success', 'Die Gruppe wurde gelöscht.');
       

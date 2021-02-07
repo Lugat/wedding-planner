@@ -32,6 +32,7 @@
 
       <div class="btn-group">
 
+        <?= Html::a('<i class="far fa-edit"></i>', ['group/update', 'id' => $group->id], ['class' => 'btn btn-sm btn-outline-primary']); ?>
         <?= Html::a('<i class="far fa-trash"></i>', ['group/delete', 'id' => $group->id], ['class' => 'btn btn-sm btn-outline-danger']); ?>
 
       </div>

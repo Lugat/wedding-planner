@@ -60,9 +60,41 @@
       
     }
     
+    protected function getPerson($id)
+    {
+      return Person::findOne(['event_id' => $this->event->id, 'id' => $id]);
+    }
+    
+    public function actionUpdate($id)
+    {
+      
+      $person = $this->getPerson($id);
+      
+      if ($person->load($_POST)) {
+
+        if ($person->update() !== false) {
+          
+          Yii::$app->session->addFlash('success', 'Der Gast wurde aktualisiert.');
+          
+          return $this->redirect(['index']);
+          
+        } else {
+          
+          Yii::$app->session->addFlash('danger', 'Der Gast konnte nicht aktualisiert werden.');
+
+        }
+
+      } 
+      
+      return $this->render('update', [
+        'person' => $person
+      ]);
+      
+    }
+    
     public function actionDelete($id)
     {
-      return (bool) Person::findOne(['event_id' => $this->event->id, 'id' => $id])->delete();
+      return (bool) $this->getPerson($id)->delete();
     }
     
   }

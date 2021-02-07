@@ -64,10 +64,42 @@
       
     }
     
+    protected function getTable($id)
+    {
+      return Table::findOne(['event_id' => $this->event->id, 'id' => $id]);
+    }
+    
+    public function actionUpdate($id)
+    {
+      
+      $table = $this->getTable($id);
+      
+      if ($table->load($_POST)) {
+
+        if ($table->update() !== false) {
+          
+          Yii::$app->session->addFlash('success', 'Der Tisch wurde aktualisiert.');
+          
+          return $this->redirect(['index']);
+          
+        } else {
+          
+          Yii::$app->session->addFlash('danger', 'Der Tisch konnte nicht aktualisiert werden.');
+
+        }
+
+      } 
+      
+      return $this->render('update', [
+        'table' => $table
+      ]);
+      
+    }
+    
     public function actionDelete($id)
     {
       
-      Table::findOne(['event_id' => $this->event->id, 'id' => $id])->delete();
+      $this->getTable($id)->delete();
       
       Yii::$app->session->addFlash('success', 'Die Tisch wurde gelöscht.');
       
