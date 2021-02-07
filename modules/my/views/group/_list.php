@@ -18,7 +18,7 @@
     </span>
   </div>
 
-  <div id="group-<?= $group->id; ?>" class="collapse" data-parent="#groups">
+  <div id="group-<?= $group->id; ?>" class="collapse">
     <div class="card-body">
 
       <?php if (!empty($group->comment)) : ?>

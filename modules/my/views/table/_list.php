@@ -18,7 +18,7 @@
     </span>
   </div>
 
-  <div id="table-<?= $table->id; ?>" class="collapse" data-parent="#tables">
+  <div id="table-<?= $table->id; ?>" class="collapse">
     <div class="card-body">
 
       <?php if (!empty($table->comment)) : ?>

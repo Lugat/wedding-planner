@@ -37,10 +37,8 @@
         <?= count($event->tables); ?>
       </span>
     </div>
-    
-    <h4></h4>
-    
-    <div class="accordion" id="tables">
+        
+    <div class="accordion">
 
       <?= $this->render('_list', ['tables' => $event->tables]); ?>
 

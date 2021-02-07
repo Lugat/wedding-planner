@@ -43,7 +43,7 @@
       </span>
     </div>
     
-    <div class="accordion" id="groups">
+    <div class="accordion">
 
       <?= $this->render('../group/_list', ['groups' => $event->groups, 'count' => "group-{$group->id}"]); ?>
 
