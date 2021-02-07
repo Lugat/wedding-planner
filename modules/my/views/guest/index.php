@@ -17,6 +17,10 @@
 
 </div>
 
+<p class="lead">Ihr rechnet mit <strong><?= $event->options['people']; ?></strong> Gästen. Aktuell sind <strong><?= count($event->people); ?></strong> Gäste eingetragen: <strong><?= count($event->adults); ?></strong> Erwachsene und <strong><?= count($event->children); ?></strong> Kinder.</p> 
+
+<p class="lead"><strong><?= count($event->optional); ?></strong> Gäste sind optional und <strong><?= count($event->confirmed); ?></strong> bereits bestätigt.</p>
+
 <hr />
 
 <?= Html::beginForm(null, 'post', ['class' => 'update']); ?>

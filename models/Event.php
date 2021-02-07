@@ -121,6 +121,26 @@
       return $this->hasMany(Person::className(), ['event_id' => 'id'])->orderBy(['group_id' => SORT_ASC, 'name' => SORT_ASC]);
     }
     
+    public function getAdults()
+    {
+      return $this->getPeople()->andWhere(['child' => 0]);
+    }
+    
+    public function getChildren()
+    {
+      return $this->getPeople()->andWhere(['child' => 1]);
+    }
+    
+    public function getOptional()
+    {
+      return $this->getPeople()->andWhere(['optional' => 1]);
+    }
+    
+    public function getConfirmed()
+    {
+      return $this->getPeople()->andWhere(['confirmed' => 1]);
+    }
+    
     public function getPeopleWithoutGroup()
     {
       return $this->hasMany(Person::className(), ['event_id' => 'id'])->andWhere(['group_id' => null])->orderBy(['name' => SORT_ASC]);
