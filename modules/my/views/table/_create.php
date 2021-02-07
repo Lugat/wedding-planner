@@ -15,7 +15,7 @@
         </button>
       </div>
       
-      <?php $form = ActiveForm::begin(); ?>
+      <?php $form = ActiveForm::begin(['action' => ['table/create']]); ?>
 
       <div class="modal-body">
 
@@ -28,7 +28,7 @@
         
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Abbrechen</button>
         
-        <?= Html::submitButton('Gruppe erstellen', ['class' => 'btn btn-primary']); ?>
+        <?= Html::submitButton('Tisch erstellen', ['class' => 'btn btn-primary']); ?>
         
       </div>
       

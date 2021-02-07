@@ -4,6 +4,8 @@
 
   use Yii;
   use yii\web\Controller;
+  
+  use app\models\Event;
 
   class SiteController extends Controller
   {
@@ -12,10 +14,51 @@
     {
       
       if (isset($_POST['uid'])) {
-        return $this->redirect(['event/index', 'uid' => $_POST['uid'], 'tab' => 'general']);
+        
+        $identity = Event::findIdentity($_POST['uid']);
+        
+        Yii::$app->user->login($identity);
+        
+        return $this->redirect(['my/event/index']);
+        
       }
       
       return $this->render('index');
+      
+    }
+    
+    public function actionCreate()
+    {
+            
+      $event = new Event;
+      if ($event->load($_POST)) {
+        
+        if ($event->save()) {
+          
+          Yii::$app->session->addFlash('success', 'Du kannst nun loslegen. Bitte merk dir deine ID.');
+
+          return $this->redirect(['my/event/index']);
+         
+        } else {
+          
+          Yii::$app->session->addFlash('danger', 'Etwas ist schief gelaufen.');
+          
+        }
+        
+      }
+      
+      return $this->render('create', [
+        'event' => $event
+      ]);
+      
+    }
+    
+    public function actionLogout()
+    {
+      
+      Yii::$app->user->logout();
+      
+      return $this->redirect(['index']);
       
     }
     

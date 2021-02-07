@@ -1,4 +1,10 @@
-<ul class="list-group sortable <?= count($people) === 0 ? 'empty' : ''; ?>" data-name="<?= $name ?? null; ?>" data-color="<?= $color ?? null; ?>">
+<?php
+
+  use yii\helpers\Html;
+
+?>
+
+<ul class="list-group sortable <?= count($people) === 0 ? 'empty' : ''; ?>" data-name="<?= $name ?? null; ?>" data-color="<?= $color ?? null; ?>" data-count="<?= $count; ?>">
 
   <?php foreach ($people as $person) : ?>
 
@@ -12,22 +18,12 @@
       <i class="far fa-comment text-primary"></i>
       <?php endif; ?>
     </span>
-    
-    <?php if ($showActionButtons === true) : ?>
-    
+        
     <div class="btn-group">
-    
-      <button type="button" name="edit" value="<?= $person->id; ?>" class="btn btn-sm btn-outline-primary">
-        <i class="far fa-edit"></i>
-      </button>
-      
-      <button type="button" name="delete" value="<?= $person->id; ?>" class="btn btn-sm btn-outline-danger">
-        <i class="far fa-trash"></i>
-      </button>
+            
+      <?= Html::a('<i class="far fa-trash"></i>', ['guest/delete', 'id' => $person->id], ['rel' => 'ajax', 'class' => 'btn btn-sm btn-outline-danger']); ?>
     
     </div>
-    
-    <?php endif; ?>
     
   </li>
 

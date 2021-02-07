@@ -3,8 +3,9 @@
   namespace app\models;
 
   use Yii;
+  use yii\db\ActiveRecord;
   
-  class Person extends \yii\db\ActiveRecord
+  class Person extends ActiveRecord
   {
 
     public static function tableName()

@@ -30,9 +30,7 @@
 
         <a class="navbar-brand" href="<?= Url::home(); ?>"><?= Yii::$app->id; ?></a>
 
-        <?php if (isset($this->context->event)) : ?>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -42,15 +40,14 @@
             'options' => ['class' => 'navbar-nav ml-auto'],
             'encodeLabels' => false,
             'items' => [
-              ['label' => '<i class="far fa-cog"></i> Allgemein', 'url' => ['index', 'uid' => $this->context->event->uid, 'tab' => 'general']],
-              ['label' => '<i class="far fa-users"></i> Gäste', 'url' => ['index', 'uid' => $this->context->event->uid, 'tab' => 'guests']],
-              ['label' => '<i class="far fa-table"></i> Tische', 'url' => ['index', 'uid' => $this->context->event->uid, 'tab' => 'tables']]
+              ['label' => '<i class="far fa-cog"></i> Allgemein', 'url' => ['/my/event/index'], 'visible' => !Yii::$app->user->isGuest],
+              ['label' => '<i class="far fa-users"></i> Gäste', 'url' => ['/my/guest/index'], 'visible' => !Yii::$app->user->isGuest],
+              ['label' => '<i class="far fa-table"></i> Tische', 'url' => ['/my/table/index'], 'visible' => !Yii::$app->user->isGuest],
+              ['label' => '<i class="far fa-logout"></i> Beenden', 'url' => ['/site/logout'], 'visible' => !Yii::$app->user->isGuest]
             ]
           ]); ?>
 
         </div>
-
-        <?php endif; ?>
       
       </div>
 

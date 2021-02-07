@@ -3,8 +3,9 @@
   namespace app\models;
 
   use Yii;
+  use yii\db\ActiveRecord;
 
-  class Table extends \yii\db\ActiveRecord
+  class Table extends ActiveRecord
   {
 
     public static function tableName()
@@ -42,25 +43,9 @@
       return $this->hasMany(Person::className(), ['table_id' => 'id'])->orderBy(['position' => SORT_ASC]);
     }
     
-    public function getState()
+    public function afterDelete()
     {
-      
-      $people = count($this->people);
-      
-      if ($people === $this->places) {
-        return 'success';
-      }
-      
-      if ($people > $this->places) {
-        return 'danger';
-      }
-      
-      if ($people === 0) {
-        return 'secondary';
-      }
-      
-      return 'info';
-            
+      return Person::updateAll(['table_id' => null, 'position' => 0], ['table_id' => $this->id]);
     }
 
   }

@@ -1,3 +1,9 @@
+<?php
+
+  use yii\helpers\Html;
+
+?>
+
 <?php foreach ($groups as $group) : ?>
 
 <div class="card">
@@ -7,7 +13,9 @@
         <?= $group->title; ?>
       </button>
     </h2>
-    <span class="badge badge-secondary"><?= count($group->people); ?></span>
+    <span class="badge badge-secondary">
+      <span data-count="group-<?= $group->id; ?>">0</span>
+    </span>
   </div>
 
   <div id="group-<?= $group->id; ?>" class="collapse" data-parent="#groups">
@@ -17,7 +25,16 @@
       <p class="card-text"><?= $group->comment; ?></p>
       <?php endif; ?>
 
-      <?= $this->render('_people', ['people' => $group->people, 'name' => "group[{$group->id}][]", 'color' => $group->color, 'showActionButtons' => false]); ?>
+      <?= $this->render('../guest/_list', ['people' => $group->people, 'count' => "group-{$group->id}", 'name' => "group[{$group->id}][]", 'color' => $group->color]); ?>
+
+    </div>
+    <div class="card-footer">
+
+      <div class="btn-group">
+
+        <?= Html::a('<i class="far fa-trash"></i>', ['group/delete', 'id' => $group->id], ['class' => 'btn btn-sm btn-outline-danger']); ?>
+
+      </div>
 
     </div>
   </div>

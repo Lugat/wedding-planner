@@ -21,24 +21,28 @@
     
     <div class="d-flex justify-content-between align-items-center">
       <h4>Gäste</h4>
-      <span class="badge badge-secondary"><?= count($event->peopleWithoutTable); ?> / <?= count($event->people); ?></span>
+      <span class="badge">
+        <span data-count="all"><?= count($event->peopleWithoutTable); ?></span> / <?= count($event->people); ?>
+      </span>
     </div>
     
-    <?= $this->render('list/_people', ['people' => $event->peopleWithoutTable, 'showActionButtons' => false]); ?>
+    <?= $this->render('../guest/_list', ['people' => $event->peopleWithoutTable, 'count' => 'all']); ?>
     
   </div>
   <div class="col-sm-6">
     
     <div class="d-flex justify-content-between align-items-center">
       <h4>Tische</h4>
-      <span class="badge badge-secondary"><?= count($event->tables); ?></span>
+      <span class="badge badge-secondary">
+        <?= count($event->tables); ?>
+      </span>
     </div>
     
     <h4></h4>
     
     <div class="accordion" id="tables">
 
-      <?= $this->render('list/_tables', ['tables' => $event->tables]); ?>
+      <?= $this->render('_list', ['tables' => $event->tables]); ?>
 
     </div>
     
@@ -47,4 +51,4 @@
 
 <?= Html::endForm(); ?>
 
-<?= $this->render('modal/_table', ['table' => $table]);
+<?= $this->render('_create', ['table' => $table]);

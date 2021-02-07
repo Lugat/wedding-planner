@@ -3,8 +3,9 @@
   namespace app\models;
 
   use Yii;
+  use yii\db\ActiveRecord;
 
-  class Group extends \yii\db\ActiveRecord
+  class Group extends ActiveRecord
   {
 
     public static function tableName()
@@ -41,6 +42,11 @@
     public function getPeople()
     {
       return $this->hasMany(Person::className(), ['group_id' => 'id']);
+    }
+    
+    public function afterDelete()
+    {
+      return Person::updateAll(['group_id' => null], ['group_id' => $this->id]);
     }
 
   }

@@ -1,3 +1,9 @@
+<?php
+
+  use yii\helpers\Html;
+
+?>
+
 <?php foreach ($tables as $table) : ?>
 
 <div class="card">
@@ -7,7 +13,9 @@
         <?= $table->title; ?>
       </button>
     </h2>
-    <span class="badge badge-<?= $table->state; ?>"><?= count($table->people); ?> / <?= $table->places; ?></span>
+    <span class="badge">
+      <span data-count="table-<?= $table->id; ?>">0</span> / <?= $table->places; ?>
+    </span>
   </div>
 
   <div id="table-<?= $table->id; ?>" class="collapse" data-parent="#tables">
@@ -17,10 +25,20 @@
       <p class="card-text"><?= $table->comment; ?></p>
       <?php endif; ?>
 
-      <?= $this->render('_people', ['people' => $table->people, 'name' => "table[{$table->id}][]", 'showActionButtons' => false]); ?>
+      <?= $this->render('../guest/_list', ['people' => $table->people, 'name' => "table[{$table->id}][]", 'count' => "table-{$table->id}"]); ?>
+
+    </div>
+    <div class="card-footer">
+
+      <div class="btn-group">
+
+        <?= Html::a('<i class="far fa-trash"></i>', ['table/delete', 'id' => $table->id], ['class' => 'btn btn-sm btn-outline-danger']); ?>
+
+      </div>
 
     </div>
   </div>
+  
 </div>
 
 <?php endforeach; ?>

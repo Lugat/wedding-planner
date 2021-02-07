@@ -15,7 +15,7 @@
         </button>
       </div>
       
-      <?php $form = ActiveForm::begin(); ?>
+      <?php $form = ActiveForm::begin(['action' => ['group/create']]); ?>
 
       <div class="modal-body">
 

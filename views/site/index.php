@@ -17,7 +17,7 @@
       <?= Html::textInput('uid', null, ['class' => 'form-control']); ?>
     </div>
 
-    <?= Html::submitButton('Event laden', ['name' => 'load', 'class' => 'btn btn-block btn-outline-primary']); ?>
+    <?= Html::submitButton('Laden', ['name' => 'load', 'class' => 'btn btn-block btn-outline-primary']); ?>
 
     <?= Html::endForm(); ?>
 
@@ -28,7 +28,7 @@
     
     <p>Fange jetzt an, deine Hochzeit zu planen.</p>
 
-    <?= Html::a('Jetzt erstellen', ['event/create'], ['class' => 'btn btn-block btn-primary']); ?>
+    <?= Html::a('Erstellen', ['event/create'], ['class' => 'btn btn-block btn-primary']); ?>
 
   </div>
 </div>

@@ -26,22 +26,26 @@
     
     <div class="d-flex justify-content-between align-items-center">
       <h4>Gäste</h4>
-      <span class="badge badge-secondary"><?= count($event->peopleWithoutGroup); ?> / <?= count($event->people); ?></span>
+      <span class="badge badge-secondary">
+        <span data-count="all">0</span> / <?= count($event->people); ?>
+      </span>
     </div>
     
-    <?= $this->render('list/_people', ['people' => $event->peopleWithoutGroup, 'color' => Yii::$app->params['defaultColor'], 'showActionButtons' => true]); ?>
+    <?= $this->render('_list', ['people' => $event->peopleWithoutGroup, 'color' => Yii::$app->params['defaultColor'], 'count' => 'all']); ?>
     
   </div>
   <div class="col-sm-6">
     
     <div class="d-flex justify-content-between align-items-center">
       <h4>Gruppen</h4>
-      <span class="badge badge-secondary"><?= count($event->groups); ?></span>
+      <span class="badge badge-secondary">
+        <span data-count="group-<?= $group->id; ?>">0</span>
+      </span>
     </div>
     
     <div class="accordion" id="groups">
 
-      <?= $this->render('list/_groups', ['groups' => $event->groups]); ?>
+      <?= $this->render('../group/_list', ['groups' => $event->groups, 'count' => "group-{$group->id}"]); ?>
 
     </div>
     
@@ -50,6 +54,6 @@
 
 <?= Html::endForm(); ?>
 
-<?= $this->render('modal/_group', ['group' => $group]); ?>
+<?= $this->render('../group/_create', ['group' => $group]); ?>
 
-<?= $this->render('modal/_person', ['person' => $person, 'event' => $event]); ?>
+<?= $this->render('_create', ['person' => $person, 'event' => $event]); ?>

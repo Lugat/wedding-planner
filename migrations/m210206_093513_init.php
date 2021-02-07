@@ -10,7 +10,7 @@
       
       $this->createTable('{{%event}}', [
         'id' => $this->primaryKey(),
-        'uid' => $this->string(32)->unique()->notNull(),
+        'uid' => $this->string(8)->unique()->notNull(),
         'title' => $this->string(64)->notNull(),
         'comment' => $this->text(),
       ]);

@@ -10,6 +10,12 @@
       '@bower' => '@vendor/bower-asset',
       '@npm' => '@vendor/npm-asset',
     ],
+    'modules' => [
+      'my' => [
+        'class' => 'app\modules\my\Module',
+        'defaultRoute' => 'event',
+      ],
+    ],
     'language' => 'de-DE',
     'sourceLanguage' => 'de-DE',
     'components' => [
@@ -18,6 +24,10 @@
       ],
       'cache' => [
         'class' => 'yii\caching\FileCache',
+      ],
+      'user' => [
+        'identityClass' => 'app\models\Event',
+        'enableAutoLogin' => true,
       ],
       'assetManager' => [
         'appendTimestamp' => YII_DEBUG,
@@ -45,11 +55,6 @@
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'rules' => [
-          [
-            'pattern' => 'my/<uid:\w+>/<tab:\w+>',
-            'route' => 'event/index',
-            'defaults' => ['tab' => 'general']
-          ],
           '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
         ]
       ],

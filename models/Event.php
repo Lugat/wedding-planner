@@ -3,8 +3,11 @@
   namespace app\models;
 
   use Yii;
+  use yii\db\ActiveRecord;
+  use yii\web\IdentityInterface;
+  use yii\helpers\ArrayHelper;
 
-  class Event extends \yii\db\ActiveRecord
+  class Event extends ActiveRecord implements IdentityInterface
   {
 
     public $options = [];
@@ -19,7 +22,7 @@
       return [
         [['uid', 'title'], 'required'],
         [['comment'], 'string'],
-        [['uid'], 'string', 'max' => 32],
+        [['uid'], 'string', 'max' => 8],
         [['title'], 'string', 'max' => 64],
         [['uid'], 'unique'],
         [['options'], 'safe']
@@ -38,13 +41,38 @@
 
     }
     
+    public static function findIdentity($id)
+    {
+      return self::findOne(['uid' => $id]);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    { 
+      return null;
+    }
+    
+    public function getId()
+    {
+      return $this->uid;
+    }
+    
+    public function getAuthKey()
+    {
+      return null;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+      return true;
+    }
+    
     public function beforeValidate()
     {
       
       if (parent::beforeValidate()) {
       
-        if ($this->isNewRecord || isset($this->new_email)) { 
-          $this->uid = md5(Yii::$app->security->generateRandomString());
+        if ($this->isNewRecord) { 
+          $this->uid = Yii::$app->security->generateRandomString(12);
         }
 
         return true;
@@ -75,14 +103,17 @@
       
     }
     
-    public function getOption($key)
+    public function afterFind()
     {
+      
+      parent::afterFind();
             
-      return Yii::$app->db->createCommand('SELECT `value` FROM {{%option}} WHERE `event_id` = :eventId AND `key` = :key', [
+      $options = Yii::$app->db->createCommand('SELECT `key`, `value` FROM {{%option}} WHERE `event_id` = :eventId', [
         ':eventId' => $this->id,
-        ':key' => $key,
-      ])->queryScalar();
-            
+      ])->queryAll();
+      
+      $this->options = ArrayHelper::map($options, 'key', 'value');
+  
     }
     
     public function getPeople()
