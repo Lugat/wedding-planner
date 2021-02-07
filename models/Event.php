@@ -72,7 +72,7 @@
       if (parent::beforeValidate()) {
       
         if ($this->isNewRecord) { 
-          $this->uid = Yii::$app->security->generateRandomString(12);
+          $this->uid = Yii::$app->security->generateRandomString(8);
         }
 
         return true;
