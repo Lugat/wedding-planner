@@ -36,6 +36,10 @@
         if ($event->save()) {
           
           Yii::$app->session->addFlash('success', 'Du kannst nun loslegen. Bitte merk dir deine ID.');
+          
+          $identity = Event::findIdentity($event->uid);
+        
+          Yii::$app->user->login($identity);
 
           return $this->redirect(['my/event/index']);
          
