@@ -36,7 +36,7 @@
         'event_id' => $this->integer()->notNull(),
         'title' => $this->string(64)->notNull(),
         'comment' => $this->text(),
-        'people' => $this->integer(2)->notNull()->defaultValue(8),
+        'places' => $this->integer(2)->notNull()->defaultValue(8),
         'UNIQUE KEY(`event_id`, `title`)'
       ]);
       

@@ -6,6 +6,7 @@
   
   use app\modules\my\components\Controller;
   use app\models\Table;
+  use app\models\Person;
 
   class TableController extends Controller
   {
