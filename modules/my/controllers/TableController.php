@@ -46,8 +46,14 @@
       if ($table->load($_POST)) {
 
         if ($table->save()) {
+          
+          Yii::$app->session->addFlash('success', 'Der Tisch wurde erstellt.');
+          
           $table = new Table;
+          
         } else {
+          
+          Yii::$app->session->addFlash('danger', 'Der Tisch konnte nicht erstellt werden.');
 
         }
 
@@ -61,6 +67,8 @@
     {
       
       Table::findOne(['event_id' => $this->event->id, 'id' => $id])->delete();
+      
+      Yii::$app->session->addFlash('success', 'Die Tisch wurde gelöscht.');
       
       return $this->redirect(['index']);
       

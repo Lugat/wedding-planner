@@ -43,9 +43,15 @@
       if ($person->load($_POST)) {
 
         if ($person->save()) {
+          
+          Yii::$app->session->addFlash('success', 'Der Gast wurde hinzugefügt.');
+          
           $person = new Person;
+          
         } else {
 
+          Yii::$app->session->addFlash('danger', 'Der Gast konnte nicht hinzugefügt werden.');
+          
         }
 
       }

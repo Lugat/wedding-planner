@@ -16,8 +16,11 @@
         
         if ($this->event->update() !== false) {
           
+          Yii::$app->session->addFlash('success', 'Du hast deine Hochzeit aktualisiert.');
           
         } else {
+          
+          Yii::$app->session->addFlash('danger', 'Deine Hochzeit konnte nicht aktualisiert werden.');
           
         }
         

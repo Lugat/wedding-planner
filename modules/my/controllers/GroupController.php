@@ -19,9 +19,15 @@
       if ($group->load($_POST)) {
 
         if ($group->save()) {
+          
+          Yii::$app->session->addFlash('success', 'Die Gruppe wurde erstellt.');
+          
           $group = new Group;
+          
         } else { 
 
+          Yii::$app->session->addFlash('danger', 'Die Gruppe konnte nicht erstellt werden.');
+          
         }
 
       }
@@ -34,6 +40,8 @@
     {
       
       Group::findOne(['event_id' => $this->event->id, 'id' => $id])->delete();
+      
+      Yii::$app->session->addFlash('success', 'Die Gruppe wurde gelöscht.');
       
       return $this->redirect(['guest/index']);
       

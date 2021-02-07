@@ -27,9 +27,9 @@
           ],
           'denyCallback' => function() {
         
-            $route = Yii::$app->user->isGuest ? '/site/index' : '/site/access-denied';
+            Yii::$app->session->addFlash('danger', 'Der Zugriff wurde verweigert.');
             
-            return $this->redirect([$route]);
+            return $this->redirect(['/site/index']);
             
           }
         ],
