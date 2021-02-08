@@ -16,12 +16,12 @@
       
       if (Yii::$app->request->isAjax) {
         
-        Person::updateAll(['table_id' => null]);
+        Person::updateAll(['event_id' => $this->event->id, 'table_id' => null]);
 
         foreach ($_POST['table'] as $tableId => $ids) {
           
           foreach ($ids as $position => $id) {
-            Person::updateAll(['table_id' => $tableId, 'position' => $position], ['id' => $id]); 
+            Person::updateAll(['event_id' => $this->event->id, 'table_id' => $tableId, 'position' => $position], ['id' => $id]); 
           }
           
         }
