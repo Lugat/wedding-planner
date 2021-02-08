@@ -16,7 +16,7 @@
       
       if (Yii::$app->request->isAjax) {
         
-        Person::updateAll(['event_id' => $this->event->id, 'table_id' => null]);
+        Person::updateAll(['table_id' => null], ['event_id' => $this->event->id]);
 
         foreach ($_POST['table'] as $tableId => $ids) {
           
