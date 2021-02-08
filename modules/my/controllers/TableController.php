@@ -21,7 +21,7 @@
         foreach ($_POST['table'] as $tableId => $ids) {
           
           foreach ($ids as $position => $id) {
-            Person::updateAll(['event_id' => $this->event->id, 'table_id' => $tableId, 'position' => $position], ['id' => $id]); 
+            Person::updateAll(['table_id' => $tableId, 'position' => $position], ['event_id' => $this->event->id, 'id' => $id]); 
           }
           
         }

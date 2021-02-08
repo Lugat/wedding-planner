@@ -19,7 +19,7 @@
         Person::updateAll(['event_id' => $this->event->id, 'group_id' => null]);
         
         foreach ($_POST['group'] as $groupId => $ids) {
-          Person::updateAll(['event_id' => $this->event->id, 'group_id' => $groupId], ['id' => $ids]);
+          Person::updateAll(['group_id' => $groupId], ['event_id' => $this->event->id, 'id' => $ids]);
         }
         
         return true;
