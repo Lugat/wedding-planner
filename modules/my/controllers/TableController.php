@@ -10,8 +10,7 @@
 
   class TableController extends Controller
   {
-
-
+    
     public function actionIndex()
     {
       
@@ -31,9 +30,12 @@
         
       }
       
+      $table = new Table;
+      $table->places = Yii::$app->params['defaultPlaces'];
+      
       return $this->render('index', [
         'event' => $this->event,
-        'table' => new Table
+        'table' => $table
       ]);
       
     }
