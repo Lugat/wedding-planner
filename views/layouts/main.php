@@ -43,6 +43,7 @@
               ['label' => '<i class="far fa-cog"></i> Allgemein', 'url' => ['/my/event/index'], 'visible' => !Yii::$app->user->isGuest],
               ['label' => '<i class="far fa-users"></i> Gäste', 'url' => ['/my/guest/index'], 'visible' => !Yii::$app->user->isGuest],
               ['label' => '<i class="far fa-table"></i> Tische', 'url' => ['/my/table/index'], 'visible' => !Yii::$app->user->isGuest],
+              ['label' => '<i class="far fa-money-bill"></i> Budget', 'url' => ['/my/budget/index'], 'visible' => !Yii::$app->user->isGuest],
               ['label' => '<i class="far fa-sign-out"></i> Beenden', 'url' => ['/site/logout'], 'visible' => !Yii::$app->user->isGuest]
             ]
           ]); ?>

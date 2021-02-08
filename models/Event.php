@@ -159,6 +159,11 @@
     public function getTables()
     {
       return $this->hasMany(Table::className(), ['event_id' => 'id']);
-    } 
+    }
 
+    public function getBudgets()
+    {
+      return $this->hasMany(Budget::className(), ['event_id' => 'id'])->orderBy(['title' => SORT_ASC]);
+    }
+    
   }

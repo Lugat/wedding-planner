@@ -54,6 +54,14 @@
         'UNIQUE KEY(`group_id`, `name`)'
       ]);
 
+      $this->createTable('{{%budget}}', [
+        'id' => $this->primaryKey(),
+        'event_id' => $this->integer()->notNull(),
+        'title' => $this->string(128)->notNull(),
+        'value' => $this->decimal(8, 2)->notNull(),
+        'per_person' => $this->tinyInteger(1)->notNull()->defaultValue(0),
+        'UNIQUE KEY(`event_id`, `title`)'
+      ]);
       
     }
     
