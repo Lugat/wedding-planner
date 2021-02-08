@@ -32,9 +32,9 @@
       return [
         'id' => 'ID',
         'event_id' => 'Event ID',
-        'title' => 'Title',
-        'comment' => 'Comment',
-        'color' => 'Color',
+        'title' => 'Titel',
+        'comment' => 'Kommentar',
+        'color' => 'Farbe',
       ];
 
     }

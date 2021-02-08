@@ -34,10 +34,10 @@
         'table_id' => 'Table ID',
         'position' => 'Position',
         'name' => 'Name',
-        'comment' => 'Comment',
-        'optional' => 'Optional',
-        'child' => 'Child',
-        'confirmed' => 'Confirmed',
+        'comment' => 'Kommentar',
+        'optional' => 'ist optional',
+        'child' => 'ist Kind',
+        'confirmed' => 'ist bestätigt',
       ];
 
     }

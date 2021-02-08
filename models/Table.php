@@ -31,9 +31,9 @@
       return [
         'id' => 'ID',
         'event_id' => 'Event ID',
-        'title' => 'Title',
-        'comment' => 'Comment',
-        'places' => 'Places',
+        'title' => 'Titel',
+        'comment' => 'Kommentar',
+        'places' => 'Sitzplätze',
       ];
 
     }   

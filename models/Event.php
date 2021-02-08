@@ -35,8 +35,8 @@
       return [
         'id' => 'ID',
         'uid' => 'UID',
-        'title' => 'Title',
-        'comment' => 'Comment',
+        'title' => 'Titel',
+        'comment' => 'Kommentar',
       ];
 
     }
